@@ -1,0 +1,11 @@
+<app-pregled
+    [pregled]="a"
+    (brisanje)="delete($event)"
+    *ngFor="let a of apointments$ | async" >
+</app-pregled>
+<!-- <br><br><br>
+<div>
+    <div *ngFor="let a of apointments$ | async">
+        {{a.dan}},{{a.pocetak}}--{{a.kraj}}
+    </div>
+</div> -->

@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-success">
+  <div class="container-fluid">
+    <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
+    <div class="navbar-links">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a routerLink="zakazivanje" activeRouterLink="active">zakazivanje pregleda </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="otkazivanje" activeRouterLink="active">otkazivanje pregleda </a>
+        </li>
+        <li class="nav-item">
+          <a  routerLink="changeDeadline" activeRouterLink="active"> promeni otkazni rok </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="weekSchedule" activeRouterLink="active">nedeljni raspored</a>
+        </li>
+        
+      <!-- </ul> -->
+      <!-- <ul class="navbar-nav ml-auto mb-2 mb-lg-0"> -->
+        <li class="nav-item">
+          <a  (click)="logout()">odjavi se</a>
+        </li>
+      </ul>
+    </div>
+    <!-- </div> -->
+  </div>
+</nav>
+<div class="image-container">
+  <div id="container-content" >
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<footer class="card-footer ">
+  <div class="text-center p-4 " >
+    © 2022 NWP
+  </div>
+</footer>

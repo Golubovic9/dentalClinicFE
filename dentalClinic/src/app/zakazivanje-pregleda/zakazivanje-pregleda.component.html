@@ -1,0 +1,74 @@
+<div class="container">
+    <br><br><br>
+    <form (ngSubmit)="getSchedule()">
+        <div class="row">
+            <div class="col-md-2">
+                <label class="text-nowrap bg-light border" for="date">odaberite datum</label>
+                <input class="form-control" type="date" name="date" [(ngModel)]="date"><br>
+            </div>  
+        </div>
+        <input class="btn btn-success" type="submit" value="unesi">
+    </form>
+    <br>
+</div>
+
+
+    <div *ngIf=" apointments != undefined">
+        <div class="container">
+            <h3 *ngIf="apointments.length>0">termini zakazani za odabrani datum</h3>
+            <table class="table table-striped">
+                <div *ngFor="let a of apointments">
+                    <tr>
+                        <td>{{a.dan}}</td>
+                        <td>{{a.pocetak}}</td>
+                        <td>{{a.kraj}}</td>
+                    </tr> 
+                </div>
+            </table>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <form (ngSubmit)="setApointment(forma)" #forma="ngForm">
+            <div ngModelGroup="apointment">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="text-nowrap bg-light border" for="start">početak</label>
+                    <input required ngModel class="form-control" matInput [format]="24" placeholder="Time range from 09:00 to 17:00" [ngxTimepicker]="range" min="09:00"
+                        max="16:30" [ngxTimepicker]="with30Gap"  name="start" readonly>
+                    <ngx-material-timepicker #range #with30Gap [minutesGap]="30"></ngx-material-timepicker>
+                </div>
+            
+             <div class="col-md-6">
+                    <label class="text-nowrap bg-light border" for="duration">trajanje pregleda </label>
+                    <select #trajanje="ngModel" class="form-control" required name="duration" ngModel>
+                        <option value="30">30 minuta</option>
+                        <option value="60">60 minuta</option>
+                    </select>
+                    <span  *ngIf="trajanje.invalid && message">
+                        *morate uneti duzinu pregleda
+                    </span>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="text-nowrap bg-light border" for="email">email </label>
+                    <input #email="ngModel" class="form-control"  type="text" required ngModel name="email">
+                </div>
+                <span  *ngIf="email.invalid && message">
+                    *morate uneti email
+                </span>
+                <div class="col-md-6">
+                    <label class="text-nowrap bg-light border" for="id">broj telefona </label>
+                    <input #phone="ngModel" class="form-control" type="text" required ngModel name="id">
+                </div>
+                <span  *ngIf="phone.invalid && message">
+                    *morate uneti broj telefona
+                </span>
+            </div>
+            <br>
+            <input class="btn btn-success" type="submit" value="zakaži">
+        </div>
+        </form>
+    </div>

@@ -1,0 +1,20 @@
+<div class="container">
+    <br><br><br>
+    <form (ngSubmit)="getSchedule()">
+        <div class="row">
+            <div class="col-md-2">
+                <label class="text-nowrap bg-light border" for="phone">unesite broj telefona</label>
+                <input class="form-control" type="text" name="phone" [(ngModel)]="phone"><br>
+            </div>  
+        </div>
+        <input class="btn btn-success" type="submit" value="unesi">
+    </form>
+    <br>
+</div>
+<div *ngIf="apointments != undefined">
+    <div *ngFor="let a of apointments ">
+        <mat-card>
+            {{a.dan}}:{{a.pocetak}}-{{a.kraj}}<button class="btn btn-success" (click)="delete(a.id)">otkaži pregled</button>
+        </mat-card>
+    </div>
+</div>
