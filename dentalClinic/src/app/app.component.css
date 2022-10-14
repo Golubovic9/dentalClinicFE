@@ -67,6 +67,10 @@ footer{
     background-color: rgb(226, 209, 209);
   }
 
+  .navitem{
+    cursor: pointer;
+  }
+
   #container-content{
     padding-top: 70px;
   }
